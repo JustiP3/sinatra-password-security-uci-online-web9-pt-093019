@@ -41,6 +41,7 @@ class ApplicationController < Sinatra::Base
 
 	get "/success" do
 		if logged_in?
+			@current_user = User.find_by(:id => session[:user_id])
 			erb :success
 		else
 			redirect "/login"
